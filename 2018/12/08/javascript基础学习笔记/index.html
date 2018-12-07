@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>&#39;javascript基础学习笔记&#39; | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="javaScript读前知识补充 主流浏览器及其内核 IE                Trident  Firefox        Gecko Safari          Webkit Chrome      Webkit/Blink Opera         Presto   浏览器组成部分  shell 部分 内核部分 渲染引擎（语法规则和渲染） js 引擎 其他模块">
+  <meta name="description" content="读前知识补充 主流浏览器及其内核 IE                Trident  Firefox        Gecko Safari          Webkit Chrome      Webkit/Blink Opera         Presto   浏览器组成部分 shell 部分 内核部分 渲染引擎（语法规则和渲染） js 引擎 其他模块">
 <meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="&#39;javascript基础学习笔记&#39;">
 <meta property="og:url" content="http://yoursite.com/2018/12/08/javascript基础学习笔记/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="javaScript读前知识补充 主流浏览器及其内核 IE                Trident  Firefox        Gecko Safari          Webkit Chrome      Webkit/Blink Opera         Presto   浏览器组成部分  shell 部分 内核部分 渲染引擎（语法规则和渲染） js 引擎 其他模块">
+<meta property="og:description" content="读前知识补充 主流浏览器及其内核 IE                Trident  Firefox        Gecko Safari          Webkit Chrome      Webkit/Blink Opera         Presto   浏览器组成部分 shell 部分 内核部分 渲染引擎（语法规则和渲染） js 引擎 其他模块">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="g:/MD学习文档/JavaScriptImg/DOM结构树.PNG">
-<meta property="og:updated_time" content="2018-12-07T16:36:22.835Z">
+<meta property="og:updated_time" content="2018-12-07T16:41:11.021Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;javascript基础学习笔记&#39;">
-<meta name="twitter:description" content="javaScript读前知识补充 主流浏览器及其内核 IE                Trident  Firefox        Gecko Safari          Webkit Chrome      Webkit/Blink Opera         Presto   浏览器组成部分  shell 部分 内核部分 渲染引擎（语法规则和渲染） js 引擎 其他模块">
+<meta name="twitter:description" content="读前知识补充 主流浏览器及其内核 IE                Trident  Firefox        Gecko Safari          Webkit Chrome      Webkit/Blink Opera         Presto   浏览器组成部分 shell 部分 内核部分 渲染引擎（语法规则和渲染） js 引擎 其他模块">
 <meta name="twitter:image" content="g:/MD学习文档/JavaScriptImg/DOM结构树.PNG">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -169,7 +169,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="javaScript"><a href="#javaScript" class="headerlink" title="javaScript"></a>javaScript</h1><h3 id="读前知识补充"><a href="#读前知识补充" class="headerlink" title="读前知识补充"></a>读前知识补充</h3><ol>
+        <h3 id="读前知识补充"><a href="#读前知识补充" class="headerlink" title="读前知识补充"></a>读前知识补充</h3><ol>
 <li>主流浏览器及其内核<ul>
 <li>IE                Trident </li>
 <li>Firefox        Gecko</li>
@@ -178,22 +178,22 @@
 <li>Opera         Presto</li>
 </ul>
 </li>
-<li><p>浏览器组成部分</p>
-<ol>
+<li>浏览器组成部分<ol>
 <li>shell 部分</li>
 <li>内核部分<ul>
 <li>渲染引擎（语法规则和渲染）</li>
 <li>js 引擎</li>
-<li>其他模块<a id="more"></a>
-<h3 id="引入方式"><a href="#引入方式" class="headerlink" title="引入方式"></a>引入方式</h3></li>
+<li>其他模块</li>
 </ul>
 </li>
 </ol>
 </li>
+</ol>
+<a id="more"></a>
+<h3 id="引入方式"><a href="#引入方式" class="headerlink" title="引入方式"></a>引入方式</h3><ol>
 <li><p>内部脚本</p>
 </li>
-<li><p>外链脚本</p>
-<p>[^注意]: 一个<code>&lt;script&gt;</code> 标签只能做一件事，内部和外链二选一 </p>
+<li><p>外链脚本<br>[^注意]: 一个<code>&lt;script&gt;</code> 标签只能做一件事，内部和外链二选一 </p>
 </li>
 <li><p>WEB标准</p>
 <blockquote>
@@ -201,7 +201,7 @@
 </blockquote>
 </li>
 </ol>
-<h5 id="变量-varible"><a href="#变量-varible" class="headerlink" title="变量(varible)"></a>变量(varible)</h5><ul>
+<h3 id="变量-varible"><a href="#变量-varible" class="headerlink" title="变量(varible)"></a>变量(varible)</h3><ul>
 <li><p>变量声明</p>
 <ul>
 <li><p>声明、赋值分解</p>
@@ -1391,18 +1391,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tag1</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tag2</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tag3</a>
-              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
