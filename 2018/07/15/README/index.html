@@ -6,16 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <!-- <title>Archives: 2019 | Hexo</title> -->
+  <!-- <title>前端构建工具-Webpack | Hexo</title> -->
   <title>Gooyun | 博客</title> 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+  <meta name="description" content="版本 Webpack3.10.0">
+<meta name="keywords" content="web前端,javascript,webpack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端构建工具-Webpack">
+<meta property="og:url" content="http://yoursite.com/2018/07/15/README/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="版本 Webpack3.10.0">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/img/webpack.png">
+<meta property="og:updated_time" content="2019-01-24T00:56:58.823Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="前端构建工具-Webpack">
+<meta name="twitter:description" content="版本 Webpack3.10.0">
+<meta name="twitter:image" content="http://yoursite.com/img/webpack.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -155,64 +162,329 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-README" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/15/CSS知识梳理/" class="archive-article-date">
-  	<time datetime="2019-01-15T11:44:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-15</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/15/CSS知识梳理/">知识梳理 - css</a>
+    <h1 class="article-title" itemprop="name">
+      前端构建工具-Webpack
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/07/15/README/" class="archive-article-date">
+  	<time datetime="2018-07-15T06:09:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/img/webpack.png" alt="alt Text"></p>
+<ul>
+<li>版本 Webpack3.10.0 <a id="more"></a>
+</li>
+</ul>
+<h3 id="1-学习准备"><a href="#1-学习准备" class="headerlink" title="1. 学习准备"></a>1. 学习准备</h3><h4 id="模块化-1"><a href="#模块化-1" class="headerlink" title="模块化-1"></a>模块化-1</h4><h5 id="JS-模块化"><a href="#JS-模块化" class="headerlink" title="JS 模块化"></a>JS 模块化</h5><ul>
+<li><p>命名空间</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 库名.类别名.方法名</span></span><br><span class="line"><span class="keyword">var</span> NameSpace = &#123;&#125;</span><br><span class="line">NameSpace.type = NameSpace.type || &#123;&#125;</span><br><span class="line">NameSpace.type.method = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 后期在 YUI 中出现了**沙箱机制**，解决了命名空间的内容过长的问题</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>COMMONJS</p>
+<ul>
+<li>一个文件为一个模块</li>
+<li>模块之间进行访问<ul>
+<li>需要通过 <code>module.exports</code> 暴露模块接口</li>
+<li>需要通过 <code>require</code> 引入模块</li>
+</ul>
+</li>
+<li>特点<ul>
+<li>同步执行<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入模块</span></span><br><span class="line"><span class="keyword">var</span> <span class="built_in">module</span> = <span class="built_in">require</span>(<span class="string">'module'</span>)</span><br><span class="line"><span class="comment">// 暴露模块</span></span><br><span class="line">exports = <span class="built_in">module</span>.exports = createApplication</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>AMD/CMD/UMD</p>
+<ul>
+<li>AMD (Async Module Definition) - 代表作 ReqireJS<ul>
+<li>使用 <code>define</code> 定义模块</li>
+<li>使用 <code>require</code> 加载模块</li>
+<li>特点<ul>
+<li>依赖前置，提前执行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>CMD (Common Module Definition) - 代表作SeaJS<ul>
+<li>一个文件为一个模块</li>
+<li>使用 <code>define</code> 来定义一个模块</li>
+<li>使用 <code>require</code> 来加载一个模块</li>
+<li>特点<ul>
+<li>尽可能的赖执行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>UMD (Universal Module Definition)<ul>
+<li>三个步骤<ul>
+<li>判断是否支持 AMD</li>
+<li>判断是否支持 CommonJS</li>
+<li>如果都没有，则使用全局变量来定义</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ES6 Module</p>
+<ul>
+<li>一个文件一个模块</li>
+<li><code>export</code>暴露模块 / <code>import</code>导入模块<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// IMPORT 导入</span></span><br><span class="line"><span class="comment">// Default exports and named exports</span></span><br><span class="line"><span class="keyword">import</span> theDefault, &#123; named1, named2 &#125; <span class="keyword">from</span> <span class="string">'src/mylib;</span></span><br><span class="line"><span class="string">import theDefault from '</span>src/mylib;</span><br><span class="line"><span class="keyword">import</span> &#123; named1, named2 &#125; <span class="keyword">from</span> <span class="string">'src/mylib;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">// `as` rename</span></span><br><span class="line"><span class="string">import &#123; named1 as myNamed1, named2 &#125; from '</span>src/mylib;</span><br><span class="line"></span><br><span class="line"><span class="comment">// `*` 暴露的所有接口都引入到本模块中</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">from</span> <span class="string">'src/mylib;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">// 加载进来，不适用内部接口 </span></span><br><span class="line"><span class="string">import '</span>src/mylib;</span><br><span class="line"></span><br><span class="line"><span class="comment">// EXPORT 暴露</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> myVar1 = <span class="string">''</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> myVar2 = <span class="string">''</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> MY_CONST = <span class="string">''</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">myFunc</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span>* <span class="title">myGeneratorFunc</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="number">123</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123; <span class="keyword">return</span> x; &#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> x =&gt; x;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(x, y) &#123;</span><br><span class="line">    <span class="keyword">this</span>.x = x;</span><br><span class="line">    <span class="keyword">this</span>.y = y;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> My_CONST = <span class="string">''</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">export</span> &#123; MY_CONST, myfunc &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 引入再暴露出去 </span></span><br><span class="line"><span class="keyword">export</span> * <span class="keyword">from</span> <span class="string">'src/other_module'</span>;</span><br><span class="line"><span class="keyword">export</span> &#123; foo <span class="keyword">as</span> myFoo, bar&#125; <span class="keyword">from</span> <span class="string">'src/other_module'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Webpack支持的模块化规范</p>
+<ul>
+<li>AMD</li>
+<li>CommonjS</li>
+<li>ES6 Module</li>
+</ul>
+</li>
+</ul>
+<h5 id="CSS-模块化"><a href="#CSS-模块化" class="headerlink" title="CSS 模块化"></a>CSS 模块化</h5><ul>
+<li>CSS 设计模式<ul>
+<li>OOCSS</li>
+<li>SMACSS</li>
+<li>Atomic CSS</li>
+<li>MCSS</li>
+<li>AMCSS</li>
+<li>BEM</li>
+<li>CSS Modules</li>
+</ul>
+</li>
+</ul>
+<h4 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h4><ul>
+<li>命令行工具</li>
+<li>Node + NPM</li>
+<li>Webpack<h4 id="Webpack-简介"><a href="#Webpack-简介" class="headerlink" title="Webpack 简介"></a>Webpack 简介</h4></li>
+</ul>
+<h4 id="Webpack-核心概念"><a href="#Webpack-核心概念" class="headerlink" title="Webpack 核心概念"></a>Webpack 核心概念</h4><ul>
+<li><p>Entry 打包/代码的入口 &amp;&amp; 单个 || 多个()</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">'index.js'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: [<span class="string">'index.js'</span>, <span class="string">'vendor.js'</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 推荐方式，简明、可扩展性强</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    index: <span class="string">'index.js'</span>, </span><br><span class="line">    vendor: <span class="string">'vendor.js'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Output 输出</p>
+<ul>
+<li>打包生成的文件(bundle)</li>
+<li>一个或多个</li>
+<li>自定义规则</li>
+<li>配合 CDN<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单个</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    index: <span class="string">'index.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">'bundle.js'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 多个</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    index: <span class="string">'index.js'</span>,</span><br><span class="line">    vendor: <span class="string">'vendor.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    <span class="comment">// [name] 表示上边entry 的 name</span></span><br><span class="line">    <span class="comment">// [hash:5] hash码的后5位，做标识码</span></span><br><span class="line">    filename: <span class="string">'[name].[hash:5].bundle.js'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Loaders 处理非 JS 的文件</p>
+<ul>
+<li>处理文件</li>
+<li><p>把文件转化为模块，可以处理的Module</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        loader: <span class="string">'css-loader'</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>常用 Loader</p>
+<ul>
+<li>编译相关<ul>
+<li>babel-loader、ts-loader</li>
+</ul>
+</li>
+<li>样式相关<ul>
+<li>style-loader、css-loader、less-loader、sass-loader、postcss-loader</li>
+</ul>
+</li>
+<li>文件相关<ul>
+<li>file-loader、url-loader</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Plugins 插件系统，做一些压缩等等</p>
+<ul>
+<li>可以参与到整个打包的过程</li>
+<li>打包优化和压缩</li>
+<li>配置编译时的变量</li>
+<li><p>……</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> webapck = <span class="built_in">require</span>(<span class="string">'webpack'</span>)</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="comment">// 代码压缩</span></span><br><span class="line">    <span class="keyword">new</span> webpack.optimize.UglifyJsPlugin()</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>常见 Plugins</p>
+<ul>
+<li>优化相关<ul>
+<li>CommonsChunkPlugin -  提取代码块</li>
+<li>UglifyjsWebpackPlugin - 代码混淆、压缩等等</li>
+</ul>
+</li>
+<li>功能相关<ul>
+<li>ExtractTextWebpackPlugin - 提取 CSS</li>
+<li>HTMLWebpackPlugin - 自动生成 HTML</li>
+<li>HotModuleReplacementPlugin - 模块热更新</li>
+<li>CopyWebpackPlugin - Copy文件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Webpack 中的名词</p>
+<ul>
+<li>Chunk - 代码块</li>
+<li>Bundle - 已被打包后的文件</li>
+<li>Module - 模块</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="2-由浅入深-Webpack-1"><a href="#2-由浅入深-Webpack-1" class="headerlink" title="2. 由浅入深 Webpack-1"></a>2. 由浅入深 Webpack-1</h3><h4 id="使用-Webpack"><a href="#使用-Webpack" class="headerlink" title="使用 Webpack"></a>使用 Webpack</h4><h4 id="打包-JS"><a href="#打包-JS" class="headerlink" title="打包 JS"></a>打包 JS</h4><h4 id="编译-ES6"><a href="#编译-ES6" class="headerlink" title="编译 ES6"></a>编译 ES6</h4><h4 id="编译-TS"><a href="#编译-TS" class="headerlink" title="编译 TS"></a>编译 TS</h4><h4 id="打包公共代码-1"><a href="#打包公共代码-1" class="headerlink" title="打包公共代码-1"></a>打包公共代码-1</h4><h4 id="打包公共代码-2"><a href="#打包公共代码-2" class="headerlink" title="打包公共代码-2"></a>打包公共代码-2</h4><h4 id="代码分割和懒加载-1"><a href="#代码分割和懒加载-1" class="headerlink" title="代码分割和懒加载-1"></a>代码分割和懒加载-1</h4><h4 id="代码分割和懒加载-2"><a href="#代码分割和懒加载-2" class="headerlink" title="代码分割和懒加载-2"></a>代码分割和懒加载-2</h4><h4 id="处理-CSS-style-loader"><a href="#处理-CSS-style-loader" class="headerlink" title="处理 CSS style-loader"></a>处理 CSS style-loader</h4><h4 id="处理-CSS-css-loader"><a href="#处理-CSS-css-loader" class="headerlink" title="处理 CSS css-loader"></a>处理 CSS css-loader</h4><h4 id="处理-CSS-配置-Less-Sass"><a href="#处理-CSS-配置-Less-Sass" class="headerlink" title="处理 CSS 配置 Less-Sass"></a>处理 CSS 配置 Less-Sass</h4><h4 id="处理-CSS-提取-CSS"><a href="#处理-CSS-提取-CSS" class="headerlink" title="处理 CSS 提取 CSS"></a>处理 CSS 提取 CSS</h4><h4 id="处理-CSS-PostCSS-in-Webpack"><a href="#处理-CSS-PostCSS-in-Webpack" class="headerlink" title="处理 CSS PostCSS-in-Webpack"></a>处理 CSS PostCSS-in-Webpack</h4><h4 id="处理-CSS-Tree-shaking-JS-Tree-shaking"><a href="#处理-CSS-Tree-shaking-JS-Tree-shaking" class="headerlink" title="处理 CSS Tree-shaking - JS Tree-shaking"></a>处理 CSS Tree-shaking - JS Tree-shaking</h4><h4 id="处理-CSS-Tree-shaking-CSS-Tree-shaking"><a href="#处理-CSS-Tree-shaking-CSS-Tree-shaking" class="headerlink" title="处理 CSS Tree-shaking - CSS Tree-shaking"></a>处理 CSS Tree-shaking - CSS Tree-shaking</h4><hr>
+<h3 id="3-由浅入深-Webpack-2"><a href="#3-由浅入深-Webpack-2" class="headerlink" title="3. 由浅入深 Webpack-2"></a>3. 由浅入深 Webpack-2</h3><h4 id="文件处理-文件处理-CSS引入图片-Base64位编码"><a href="#文件处理-文件处理-CSS引入图片-Base64位编码" class="headerlink" title="文件处理-文件处理 - CSS引入图片-Base64位编码"></a>文件处理-文件处理 - CSS引入图片-Base64位编码</h4><h4 id="文件处理-文件处理-压缩图片-自动合成雪碧图sprite、retina处理"><a href="#文件处理-文件处理-压缩图片-自动合成雪碧图sprite、retina处理" class="headerlink" title="文件处理-文件处理 - 压缩图片-自动合成雪碧图sprite、retina处理"></a>文件处理-文件处理 - 压缩图片-自动合成雪碧图sprite、retina处理</h4><h4 id="文件处理-处理字体文件"><a href="#文件处理-处理字体文件" class="headerlink" title="文件处理-处理字体文件"></a>文件处理-处理字体文件</h4><h4 id="文件处理-处理第三方-JS-库-providePlugin、imports-loader"><a href="#文件处理-处理第三方-JS-库-providePlugin、imports-loader" class="headerlink" title="文件处理-处理第三方 JS 库 (providePlugin、imports-loader)"></a>文件处理-处理第三方 JS 库 (providePlugin、imports-loader)</h4><h4 id="html-in-webpack-生成-HTML"><a href="#html-in-webpack-生成-HTML" class="headerlink" title="html-in-webpack - 生成 HTML"></a>html-in-webpack - 生成 HTML</h4><h4 id="html-in-webpack-HTML-中引入图片"><a href="#html-in-webpack-HTML-中引入图片" class="headerlink" title="html-in-webpack - HTML 中引入图片"></a>html-in-webpack - HTML 中引入图片</h4><h4 id="html-in-webpack-配合优化"><a href="#html-in-webpack-配合优化" class="headerlink" title="html-in-webpack - 配合优化"></a>html-in-webpack - 配合优化</h4><hr>
+<h3 id="4-Webpack-环境配置"><a href="#4-Webpack-环境配置" class="headerlink" title="4. Webpack 环境配置"></a>4. Webpack 环境配置</h3><h4 id="开发环境-Webpack-Watch-Mode"><a href="#开发环境-Webpack-Watch-Mode" class="headerlink" title="开发环境-Webpack Watch Mode"></a>开发环境-Webpack Watch Mode</h4><h4 id="开发环境-Webpack-Dev-Server-本地-rewrite-规则"><a href="#开发环境-Webpack-Dev-Server-本地-rewrite-规则" class="headerlink" title="开发环境-Webpack Dev Server - 本地 rewrite 规则"></a>开发环境-Webpack Dev Server - 本地 rewrite 规则</h4><h4 id="开发环境-代理远程接口"><a href="#开发环境-代理远程接口" class="headerlink" title="开发环境-代理远程接口"></a>开发环境-代理远程接口</h4><h4 id="开发环境-模块热更新"><a href="#开发环境-模块热更新" class="headerlink" title="开发环境-模块热更新"></a>开发环境-模块热更新</h4><h4 id="开发环境-开启调试-SourceMap"><a href="#开发环境-开启调试-SourceMap" class="headerlink" title="开发环境-开启调试 SourceMap"></a>开发环境-开启调试 SourceMap</h4><h4 id="开发环境-设置-ESLint-检查代码格式"><a href="#开发环境-设置-ESLint-检查代码格式" class="headerlink" title="开发环境-设置 ESLint 检查代码格式"></a>开发环境-设置 ESLint 检查代码格式</h4><h4 id="开发环境-区分开发环境和生产环境-1"><a href="#开发环境-区分开发环境和生产环境-1" class="headerlink" title="开发环境-区分开发环境和生产环境-1"></a>开发环境-区分开发环境和生产环境-1</h4><h4 id="开发环境-区分开发环境和生产环境-2"><a href="#开发环境-区分开发环境和生产环境-2" class="headerlink" title="开发环境-区分开发环境和生产环境-2"></a>开发环境-区分开发环境和生产环境-2</h4><h4 id="开发环境-使用-middleware-来搭建开发环境"><a href="#开发环境-使用-middleware-来搭建开发环境" class="headerlink" title="开发环境-使用 middleware 来搭建开发环境"></a>开发环境-使用 middleware 来搭建开发环境</h4><hr>
+<h3 id="5-Webpack-实战场景"><a href="#5-Webpack-实战场景" class="headerlink" title="5. Webpack 实战场景"></a>5. Webpack 实战场景</h3><h4 id="分析打包结果"><a href="#分析打包结果" class="headerlink" title="分析打包结果"></a>分析打包结果</h4><h4 id="优化打包速度-1"><a href="#优化打包速度-1" class="headerlink" title="优化打包速度-1"></a>优化打包速度-1</h4><h4 id="优化打包速度-2"><a href="#优化打包速度-2" class="headerlink" title="优化打包速度-2"></a>优化打包速度-2</h4><h4 id="长缓存优化"><a href="#长缓存优化" class="headerlink" title="长缓存优化"></a>长缓存优化</h4><h4 id="Webpack-多个页面应用-1"><a href="#Webpack-多个页面应用-1" class="headerlink" title="Webpack 多个页面应用-1"></a>Webpack 多个页面应用-1</h4><h4 id="Webpack-多个页面应用-1-1"><a href="#Webpack-多个页面应用-1-1" class="headerlink" title="Webpack 多个页面应用-1"></a>Webpack 多个页面应用-1</h4><hr>
+<h3 id="6-Webpack-和-Vue"><a href="#6-Webpack-和-Vue" class="headerlink" title="6. Webpack 和 Vue"></a>6. Webpack 和 Vue</h3><hr>
+<h3 id="7-Webpack-和-React"><a href="#7-Webpack-和-React" class="headerlink" title="7. Webpack 和 React"></a>7. Webpack 和 React</h3><hr>
+<h3 id="8-Webpack-和-Angular"><a href="#8-Webpack-和-Angular" class="headerlink" title="8. Webpack 和 Angular"></a>8. Webpack 和 Angular</h3><hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">web前端</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">web前端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/15/README/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/01/15/CSS知识梳理/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          知识梳理 - css
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/07/15/webpack/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">前端构建工具-Webpack</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -236,8 +508,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
